@@ -178,6 +178,30 @@ Each item in the list can be of the format `fieldName` or `fieldName:sortOrder`.
 The `sortOrder` piece can be either `asc` or `desc`. If just a field name is given,
 `sortOrder` defaults to `asc`.
 
+##### startAt
+
+> `any` | defaults to `null`
+
+Inclusive start [pagination cursor](https://firebase.google.com/docs/firestore/query-data/query-cursors)
+
+##### startAfter
+
+> `any` | defaults to `null`
+
+Exclusive start [pagination cursor](https://firebase.google.com/docs/firestore/query-data/query-cursors)
+
+##### endBefore
+
+> `any` | defaults to `null`
+
+Exclusive end [pagination cursor](https://firebase.google.com/docs/firestore/query-data/query-cursors)
+
+##### endAt
+
+> `any` | defaults to `null`
+
+Inclusive end [pagination cursor](https://firebase.google.com/docs/firestore/query-data/query-cursors)
+
 ##### limit
 
 > `number` | defaults to `null`
