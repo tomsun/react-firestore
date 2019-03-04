@@ -6,12 +6,10 @@ export default class FirestoreProvider extends Component {
   static propTypes = {
     firebase: PropTypes.object.isRequired,
     children: PropTypes.node.isRequired,
-    useTimestampsInSnapshots: PropTypes.bool.isRequired,
+    useTimestampsInSnapshots: PropTypes.bool,
   };
 
-  static defaultProps = {
-    useTimestampsInSnapshots: false,
-  };
+  static defaultProps = {};
 
   static childContextTypes = {
     firestoreDatabase: PropTypes.object.isRequired,
@@ -22,9 +20,11 @@ export default class FirestoreProvider extends Component {
     super(props);
 
     const { firebase, useTimestampsInSnapshots } = props;
-    const settings = { timestampsInSnapshots: useTimestampsInSnapshots };
     const firestore = firebase.firestore();
-    firestore.settings(settings);
+    if (typeof useTimestampsInSnapshots !== 'undefined') {
+      const settings = { timestampsInSnapshots: useTimestampsInSnapshots };
+      firestore.settings(settings);
+    }
 
     this.state = {
       firestoreDatabase: firestore,
